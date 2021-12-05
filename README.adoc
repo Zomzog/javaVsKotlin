@@ -1,0 +1,17 @@
+== Java Vs Kotlin
+
+Slide for the presentation
+
+== Test local
+
+[source, bash]
+----
+yarn install
+----
+
+[source, bash]
+----
+gulp serve
+----
+
+Open in your browser http://localhost:3000

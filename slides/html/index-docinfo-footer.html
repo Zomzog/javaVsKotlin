@@ -1,0 +1,34 @@
+<link rel="stylesheet" href="plugins/chalkboard/style.css">
+<script src="plugins/chalkboard/plugin.js"></script>
+<script src="plugins/reveal.js-menu/menu.js"></script>
+<script>
+  Reveal.initialize({
+    plugins: [ RevealMenu ]
+  });
+</script>
+
+<script>
+  Reveal.configure({
+    menu: {
+      side: 'right',
+      openButton: false
+    },
+    keyboard: {
+      68: function() { RevealChalkboard.toggleNotesCanvas() },
+      69: function() { RevealChalkboard.toggleChalkboard() }, // C
+      67: function() { // change css on C
+        const theme = document.getElementById('theme')
+        if ( defaultCss === theme.getAttribute('href')) {
+          console.log("talend")
+          theme.setAttribute('href',talendCss)
+        } else {
+          console.log("default")
+          theme.setAttribute('href',defaultCss)
+        }
+    }
+  }
+})
+
+  Reveal.registerPlugin(RevealMenu)
+  Reveal.registerPlugin(RevealChalkboard)
+</script>
