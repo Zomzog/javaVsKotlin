@@ -1,0 +1,47 @@
+== What we have seen
+
+[fragment]#Cleaner code#
+
+[fragment]#More functional#
+
+[fragment]#First-class support for Kotlin#
+
+[fragment]#Production ready#
+
+[fragment]#Fully interoperable#
+
+[fragement]#Easy to learn for Java or Scala developers#
+
+[fragement]#Works with java 8#
+
+== To infinity and beyond
+
+[fragment]#Coroutine#
+
+[fragment]#Tests#
+
+[fragment]#Libraries like Mockk, AssertK...#
+
+[fragment]#Native and Js#
+
+== Questions?
+
+image::questions.png[canvas,size=contain]
+
+[.columns]
+== Thanks
+
+[.column]
+--
+image:bigM.png[]
+--
+[.column.is-three-quarters]
+--
+Slides
+
+link:https://zomzog.fr/javaVsKotlin[zomzog.fr/javaVsKotlin]
+
+Source code
+
+link:https://github.com/zomzog/javaVsKotlin[github.com/zomzog/javaVsKotlin]
+--

@@ -1,0 +1,334 @@
+== Boilerplate code
+
+image:kirk.gif[]
+
+[%notitle]
+[transition=fade-in]
+== Class
+
+image:java.png[width=30]
+[source,java]
+----
+public class Pony {
+    private String name;
+
+    public Pony(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+}
+----
+
+image:kotlin.png[width=30]
+[source,kotlin]
+[.hideCode]
+----
+class Pony(val name: String) {
+
+}
+----
+
+[%notitle]
+[transition=fade-in]
+== Class
+
+image:java.png[width=30]
+[source,java]
+----
+public class Pony {
+    private String name;
+
+    public Pony(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+}
+----
+
+image:kotlin.png[width=30]
+[source,kotlin]
+----
+class Pony                   {
+    
+}
+----
+
+[NOTE.speaker]
+--
+Public by default
+--
+
+[%notitle]
+[transition=fade-in]
+== Class
+
+image:java.png[width=30]
+[source,java]
+----
+public class Pony {
+    private String name;
+
+    public Pony(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+}
+----
+
+image:kotlin.png[width=30]
+[source,kotlin]
+----
+class Pony(var name: String) {
+    
+}
+----
+
+[NOTE.speaker]
+--
+type after the name because the name is more important
+--
+
+
+[%notitle]
+[transition=fade-in]
+== Class
+
+image:java.png[width=30]
+[source,java]
+----
+public class Pony {
+    private final String name;
+
+    public Pony(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+}
+----
+
+image:kotlin.png[width=30]
+[source,kotlin]
+----
+class Pony(val name: String) {
+    
+}
+----
+
+[NOTE.speaker]
+--
+immutable? it's val
+--
+
+
+[%notitle]
+[transition=fade-in]
+== Class
+
+image:java.png[width=30]
+[source,java]
+----
+public class Pony {
+    private final String name;
+
+    public Pony(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+}
+----
+[source,java]
+----
+new Pony("Rainbow Dash");
+----
+
+image:kotlin.png[width=30]
+[source,kotlin]
+----
+class Pony(val name: String)
+----
+[source,java, step=1]
+----
+Pony("Rainbow Dash")
+----
+
+[NOTE.speaker]
+--
+no new
+curly braces optional as the semicolumn
+--
+
+
+[transition=fade-in]
+== Data class
+
+image:java.png[width=30]
+[source,java]
+----
+@lombok.Data
+public Pony {
+    private String name;
+}
+----
+
+image:kotlin.png[width=30]
+[source,kotlin]
+[.hidden]
+----
+data class Pony(val name: String)
+----
+
+[NOTE.speaker]
+--
+curly braces optional as the semicolumn
+--
+
+
+[transition=fade-in]
+== Data class
+
+image:java.png[width=30]
+[source,java]
+----
+public record Pony(String name) {
+}
+----
+
+image:kotlin.png[width=30]
+[source,kotlin,step=1]
+----
+data class Pony(val name: String)
+----
+
+[NOTE.speaker]
+--
+curly braces optional as the semicolumn
+--
+
+
+[%notitle]
+== Sucre
+
+image:sucre.jpg[]
+
+
+[transition=fade-in]
+== Data class
+
+image:kotlin.png[width=30]
+[source,kotlin]
+----
+data class Pony(
+    val id: String,
+    val name: String)
+----
+
+[NOTE.speaker]
+--
+default parameters
+--
+
+[source,kotlin]
+[.hidden]
+----
+val p1 = Pony("123") // Pony(id=123, name=Rainbow Dash)
+----
+[source,kotlin]
+[.hidden]
+----
+val p2 = Pony(name = "Pinkie", id = "234")
+----
+[source,kotlin]
+[.hidden]
+----
+val p3 = p1.copy(name = "Twilight")
+----
+[source,kotlin]
+[.hidden]
+----
+val (id, name) = p1 // id=123 name=Rainbow Dash
+----
+[source,kotlin]
+[.hidden]
+----
+val (_, name) = p1
+----
+
+
+[transition=fade-in]
+== Default, Named, ...
+
+
+image:kotlin.png[width=30]
+[source,kotlin]
+----
+data class Pony(
+    val id: String,
+    val name: String = "Rainbow Dash")
+----
+
+[source,kotlin, step=1]
+----
+val p1 = Pony("123") // Pony(id=123, name=Rainbow Dash)
+----
+[source,kotlin, step=2]
+----
+val p2 = Pony(name = "Pinkie", id = "234")
+----
+[source,kotlin, step=3]
+----
+val p3 = p1.copy(name = "Twilight")
+----
+[source,kotlin, step=4]
+----
+val (id, name) = p1
+----
+[source,kotlin, step=5]
+----
+val (_, name) = p1
+----
+
+[NOTE.speaker]
+--
+default parameters
+--
+
+[transition=fade-in]
+== Value
+
+image:java.png[width=30]
+[source,java]
+----
+record Pony(PonyId id, PonyName name) {}
+----
+[source,java, step=1]
+----
+record PonyId(String value) {}
+----
+
+image:kotlin.png[width=30]
+[source,kotlin, step=2]
+----
+@JvmInline
+value class PonyId(val id: String)
+----
+
+[NOTE.speaker]
+--
+default parameters
+--
+

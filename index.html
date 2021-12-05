@@ -416,8 +416,12 @@ ul.byline li + li {
 </style><link rel="stylesheet" href="css/custom.css"></head><body><div class="reveal"><div class="slides"><section class="title" data-state="title"><h1>Java VS Kotlin</h1></section><section id="_java_17_vs_kotlin_1_6"><h2>Java 17 VS Kotlin 1.6</h2><div class="slide-content"><aside class="notes"><div class="paragraph"><p>All I will show works for Kotlin with java 8</p></div></aside></div></section>
 <section id="_history"><h2>History</h2><div class="slide-content"><div class="ulist"><ul><li><p>2011 - Created by JetBrain</p></li><li><p>2016 - 1.0</p></li><li><p>2017 - First-class support for Kotlin on Android</p></li><li><p>2021 - 1.6</p></li></ul></div>
 <aside class="notes"><div class="paragraph"><p>You found an Android developper? He know Kotlin</p></div></aside></div></section>
-<section id="_why"><h2>Why</h2><div class="slide-content"><div class="ulist"><ul><li><p>Fast (at least as fast as Java).</p></li><li><p>100% Interoperability with Java.</p></li><li><p>Concise and expressive code.</p></li></ul></div>
+<section id="_why"><h2>Why</h2><div class="slide-content"><div class="paragraph"><p><span class="fragment">Fast (at least as fast as Java).</span></p></div>
+<div class="paragraph"><p><span class="fragment">100% Interoperability with Java.</span></p></div>
+<div class="paragraph"><p><span class="fragment">Concise and expressive code.</span></p></div>
+<div class="paragraph"><p><span class="fragment">Easy to learn for java developpers.</span></p></div>
 <aside class="notes"><div class="paragraph"><p>Exclude Scala compilation too slow and complex</p></div></aside></div></section>
+<section id="_boilerplate_code"><h2>Boilerplate code</h2><div class="slide-content"><div class="paragraph"><p><span class="image"><img src="images/kirk.gif" alt="kirk"></span></p></div></div></section>
 <section id="_class" data-transition="fade-in"><div class="slide-content"><div class="paragraph"><p><span class="image"><img src="images/java.png" alt="java" width="30"></span></p></div>
 <div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-java hljs" data-noescape="true" data-lang="java">public class Pony {
     private String name;
@@ -504,43 +508,70 @@ ul.byline li + li {
 <aside class="notes"><div class="paragraph"><p>no new
 curly braces optional as the semicolumn</p></div></aside></div></section>
 <section id="_data_class" data-transition="fade-in"><h2>Data class</h2><div class="slide-content"><div class="paragraph"><p><span class="image"><img src="images/java.png" alt="java" width="30"></span></p></div>
+<div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-java hljs" data-noescape="true" data-lang="java">@lombok.Data
+public Pony {
+    private String name;
+}</code></pre></div></div>
+<div class="paragraph"><p><span class="image"><img src="images/kotlin.png" alt="kotlin" width="30"></span></p></div>
+<div class="listingblock hidden"><div class="content"><pre class="highlightjs highlight"><code class="language-kotlin hljs" data-noescape="true" data-lang="kotlin">data class Pony(val name: String)</code></pre></div></div>
+<aside class="notes"><div class="paragraph"><p>curly braces optional as the semicolumn</p></div></aside></div></section>
+<section id="_data_class_2" data-transition="fade-in"><h2>Data class</h2><div class="slide-content"><div class="paragraph"><p><span class="image"><img src="images/java.png" alt="java" width="30"></span></p></div>
 <div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-java hljs" data-noescape="true" data-lang="java">public record Pony(String name) {
 }</code></pre></div></div>
 <div class="paragraph"><p><span class="image"><img src="images/kotlin.png" alt="kotlin" width="30"></span></p></div>
 <div class="listingblock fragment" data-fragment-index="1"><div class="content"><pre class="highlightjs highlight"><code class="language-kotlin hljs" data-noescape="true" data-lang="kotlin">data class Pony(val name: String)</code></pre></div></div>
 <aside class="notes"><div class="paragraph"><p>curly braces optional as the semicolumn</p></div></aside></div></section>
 <section id="_sucre"><div class="slide-content"><div class="paragraph"><p><span class="image"><img src="images/sucre.jpg" alt="sucre"></span></p></div></div></section>
-<section id="_data_class_2" data-transition="fade-in"><h2>Data class</h2><div class="slide-content"><div class="paragraph"><p><span class="image"><img src="images/java.png" alt="java" width="30"></span></p></div>
-<div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-java hljs" data-noescape="true" data-lang="java">public record Pony(String name) {
-}</code></pre></div></div>
-<div class="paragraph"><p><span class="image"><img src="images/kotlin.png" alt="kotlin" width="30"></span></p></div>
-<div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-kotlin hljs" data-noescape="true" data-lang="kotlin">data class Pony(val name: String = "Rainbow Dash")</code></pre></div></div>
-<aside class="notes"><div class="paragraph"><p>default parameters</p></div></aside></div></section>
+<section id="_data_class_3" data-transition="fade-in"><h2>Data class</h2><div class="slide-content"><div class="paragraph"><p><span class="image"><img src="images/kotlin.png" alt="kotlin" width="30"></span></p></div>
+<div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-kotlin hljs" data-noescape="true" data-lang="kotlin">data class Pony(
+    val id: String,
+    val name: String)</code></pre></div></div>
+<aside class="notes"><div class="paragraph"><p>default parameters</p></div></aside>
+<div class="listingblock hidden"><div class="content"><pre class="highlightjs highlight"><code class="language-kotlin hljs" data-noescape="true" data-lang="kotlin">val p1 = Pony("123") // Pony(id=123, name=Rainbow Dash)</code></pre></div></div>
+<div class="listingblock hidden"><div class="content"><pre class="highlightjs highlight"><code class="language-kotlin hljs" data-noescape="true" data-lang="kotlin">val p2 = Pony(name = "Pinkie", id = "234")</code></pre></div></div>
+<div class="listingblock hidden"><div class="content"><pre class="highlightjs highlight"><code class="language-kotlin hljs" data-noescape="true" data-lang="kotlin">val p3 = p1.copy(name = "Twilight")</code></pre></div></div>
+<div class="listingblock hidden"><div class="content"><pre class="highlightjs highlight"><code class="language-kotlin hljs" data-noescape="true" data-lang="kotlin">val (id, name) = p1 // id=123 name=Rainbow Dash</code></pre></div></div>
+<div class="listingblock hidden"><div class="content"><pre class="highlightjs highlight"><code class="language-kotlin hljs" data-noescape="true" data-lang="kotlin">val (_, name) = p1</code></pre></div></div></div></section>
 <section id="_default_named" data-transition="fade-in"><h2>Default, Named, &#8230;&#8203;</h2><div class="slide-content"><div class="paragraph"><p><span class="image"><img src="images/kotlin.png" alt="kotlin" width="30"></span></p></div>
 <div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-kotlin hljs" data-noescape="true" data-lang="kotlin">data class Pony(
     val id: String,
     val name: String = "Rainbow Dash")</code></pre></div></div>
 <div class="listingblock fragment" data-fragment-index="1"><div class="content"><pre class="highlightjs highlight"><code class="language-kotlin hljs" data-noescape="true" data-lang="kotlin">val p1 = Pony("123") // Pony(id=123, name=Rainbow Dash)</code></pre></div></div>
-<div class="listingblock fragment" data-fragment-index="2"><div class="content"><pre class="highlightjs highlight"><code class="language-kotlin hljs" data-noescape="true" data-lang="kotlin">val p2 = Pony(name = "Pinkie", id = "234") // Pony(id=234, name=Pinkie)</code></pre></div></div>
-<div class="listingblock fragment" data-fragment-index="3"><div class="content"><pre class="highlightjs highlight"><code class="language-kotlin hljs" data-noescape="true" data-lang="kotlin">val p3 = p1.copy(name = "Twilight") // Pony(id=123, name=Twilight)</code></pre></div></div>
-<div class="listingblock fragment" data-fragment-index="4"><div class="content"><pre class="highlightjs highlight"><code class="language-kotlin hljs" data-noescape="true" data-lang="kotlin">val (id, name) = p1 // id=123 name=Rainbow Dash</code></pre></div></div>
+<div class="listingblock fragment" data-fragment-index="2"><div class="content"><pre class="highlightjs highlight"><code class="language-kotlin hljs" data-noescape="true" data-lang="kotlin">val p2 = Pony(name = "Pinkie", id = "234")</code></pre></div></div>
+<div class="listingblock fragment" data-fragment-index="3"><div class="content"><pre class="highlightjs highlight"><code class="language-kotlin hljs" data-noescape="true" data-lang="kotlin">val p3 = p1.copy(name = "Twilight")</code></pre></div></div>
+<div class="listingblock fragment" data-fragment-index="4"><div class="content"><pre class="highlightjs highlight"><code class="language-kotlin hljs" data-noescape="true" data-lang="kotlin">val (id, name) = p1</code></pre></div></div>
 <div class="listingblock fragment" data-fragment-index="5"><div class="content"><pre class="highlightjs highlight"><code class="language-kotlin hljs" data-noescape="true" data-lang="kotlin">val (_, name) = p1</code></pre></div></div>
 <aside class="notes"><div class="paragraph"><p>default parameters</p></div></aside></div></section>
 <section id="_value" data-transition="fade-in"><h2>Value</h2><div class="slide-content"><div class="paragraph"><p><span class="image"><img src="images/java.png" alt="java" width="30"></span></p></div>
-<div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-java hljs" data-noescape="true" data-lang="java">record PonyId(String value) {}</code></pre></div></div>
-<div class="listingblock fragment" data-fragment-index="1"><div class="content"><pre class="highlightjs highlight"><code class="language-java hljs" data-noescape="true" data-lang="java">record Pony(PonyId id, PonyName name) {}</code></pre></div></div>
+<div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-java hljs" data-noescape="true" data-lang="java">record Pony(PonyId id, PonyName name) {}</code></pre></div></div>
+<div class="listingblock fragment" data-fragment-index="1"><div class="content"><pre class="highlightjs highlight"><code class="language-java hljs" data-noescape="true" data-lang="java">record PonyId(String value) {}</code></pre></div></div>
 <div class="paragraph"><p><span class="image"><img src="images/kotlin.png" alt="kotlin" width="30"></span></p></div>
 <div class="listingblock fragment" data-fragment-index="2"><div class="content"><pre class="highlightjs highlight"><code class="language-kotlin hljs" data-noescape="true" data-lang="kotlin">@JvmInline
 value class PonyId(val id: String)</code></pre></div></div>
 <aside class="notes"><div class="paragraph"><p>default parameters</p></div></aside></div></section>
-<section id="_old"><div class="slide-content"><div class="paragraph"><p><span class="image"><img src="images/old.gif" alt="old" width="300"></span></p></div>
-<aside class="notes"><div class="paragraph"><p>Tu me montre plein de super chose mais moi j&#8217;ai encore du java</p></div></aside></div></section>
-<section id="_calling_kotlin_from_java" data-transition="slide-in fade-out"><h2>Calling Kotlin from Java</h2><div class="slide-content"><div class="paragraph"><p><span class="image"><img src="images/java.png" alt="java" width="30"></span></p></div>
-<div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-java hljs" data-noescape="true" data-lang="java">var p = new Pony("id", "name");
-p.copy("123", p.getName());
-p.getId();</code></pre></div></div>
-<aside class="notes"><div class="paragraph"><p>Kotlin can call java code but also create java friendly code
-It&#8217;s also possible to generate multiple fuctions for default parameters</p></div></aside></div></section>
+<section id="_kotlin_functions_are_first_class"><h2>Kotlin functions are first-class</h2></section>
+<section id="_function" data-transition="fade-in"><h2>Function</h2><div class="slide-content"><div class="paragraph"><p><span class="image"><img src="images/kotlin.png" alt="kotlin" width="30"></span></p></div>
+<div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-kotlin hljs" data-noescape="true" data-lang="kotlin">fun doStuff(                           )         {
+
+}</code></pre></div></div>
+<aside class="notes"><div class="paragraph"><p>fun keyword</p></div></aside></div></section>
+<section id="_function_2" data-transition="fade-in"><h2>Function</h2><div class="slide-content"><div class="paragraph"><p><span class="image"><img src="images/kotlin.png" alt="kotlin" width="30"></span></p></div>
+<div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-kotlin hljs" data-noescape="true" data-lang="kotlin">fun doStuff(name: String, count:Int    ): String {
+    return "name $count"
+}</code></pre></div></div>
+<aside class="notes"><div class="paragraph"><p>return type after</p></div></aside></div></section>
+<section id="_function_3" data-transition="fade-in"><h2>Function</h2><div class="slide-content"><div class="paragraph"><p><span class="image"><img src="images/kotlin.png" alt="kotlin" width="30"></span></p></div>
+<div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-kotlin hljs" data-noescape="true" data-lang="kotlin">fun doStuff(name: String, count:Int = 0): String {
+    return "name $count"
+}</code></pre></div></div>
+<aside class="notes"><div class="paragraph"><p>default parameters</p></div></aside></div></section>
+<section id="_function_4" data-transition="fade-in"><h2>Function</h2><div class="slide-content"><div class="paragraph"><p><span class="image"><img src="images/kotlin.png" alt="kotlin" width="30"></span></p></div>
+<div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-kotlin hljs" data-noescape="true" data-lang="kotlin">fun doStuff(name: String, count:Int = 0): String {
+    return "name $count"
+}</code></pre></div></div>
+<div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-kotlin hljs" data-noescape="true" data-lang="kotlin">fun doStuff(name: String, count:Int = 0) = "name $count"</code></pre></div></div>
+<aside class="notes"><div class="paragraph"><p>If one line or chain, type can be infered and syntax simplified</p></div>
+<div class="paragraph"><p>First class citizen = this is valid we don&#8217;t need a class</p></div></aside></div></section>
 <section id="_lambda" data-transition="fade-in"><h2>Lambda</h2><div class="slide-content"><div class="paragraph"><p><span class="image"><img src="images/java.png" alt="java" width="30"></span></p></div>
 <div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-java hljs" data-noescape="true" data-lang="java">public String doStuff(String name, BiFunction&lt;String, Integer, String&gt; f) {
     return f.apply(name, 42);
@@ -573,7 +604,7 @@ doStuff("name", (a,b) -&gt; a+b);</code></pre></div></div>
 }
 doStuff("name") {a,b -&gt; a + b}</code></pre></div></div>
 <aside class="notes"><div class="paragraph"><p>Lambda last parameter can be extracted</p></div></aside></div></section>
-<section id="_lambda_usage" data-transition="fade-out"><h2>Lambda Usage</h2><div class="slide-content"><div class="paragraph"><p><span class="image"><img src="images/java.png" alt="java" width="30"></span></p></div>
+<section id="_lambda_for_dsl" data-transition="fade-out"><h2>Lambda for DSL</h2><div class="slide-content"><div class="paragraph"><p><span class="image"><img src="images/java.png" alt="java" width="30"></span></p></div>
 <div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-java hljs" data-noescape="true" data-lang="java">@Bean
 RouterFunction&lt;ServerResponse&gt; routes(PonyHandler ponyHandler) {
     return
@@ -581,8 +612,8 @@ RouterFunction&lt;ServerResponse&gt; routes(PonyHandler ponyHandler) {
                     .and(route(POST("/ponies"), ponyHandler::create))
                     .andNest(path("/{id}"),
                             route(GET("/"), ponyHandler::findOne));
-}</code></pre></div></div>
-<div class="paragraph"><p><span class="image"><img src="images/kotlin.png" alt="kotlin" width="30"></span></p></div>
+}</code></pre></div></div></div></section>
+<section id="_lambda_for_dsl_2" data-transition="fade-in"><h2>Lambda for DSL</h2><div class="slide-content"><div class="paragraph"><p><span class="image"><img src="images/kotlin.png" alt="kotlin" width="30"></span></p></div>
 <div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-kotlin hljs" data-noescape="true" data-lang="kotlin">@Bean
 fun routes(ponyHandler: PonyHandler): RouterFunction&lt;ServerResponse&gt; {
     return route(GET("/ponies"), ponyHandler::findAll)
@@ -591,16 +622,7 @@ fun routes(ponyHandler: PonyHandler): RouterFunction&lt;ServerResponse&gt; {
                     route(GET("/"), ponyHandler::findOne))
 }</code></pre></div></div>
 <aside class="notes"><div class="paragraph"><p>Lambda last parameter can be extracted</p></div></aside></div></section>
-<section id="_lambda_usage_2" data-transition="fade-in"><h2>Lambda Usage</h2><div class="slide-content"><div class="paragraph"><p><span class="image"><img src="images/java.png" alt="java" width="30"></span></p></div>
-<div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-java hljs" data-noescape="true" data-lang="java">@Bean
-RouterFunction&lt;ServerResponse&gt; routes(PonyHandler ponyHandler) {
-    return
-            route(GET("/ponies"), ponyHandler::findAll)
-                    .and(route(POST("/ponies"), ponyHandler::create))
-                    .andNest(path("/{id}"),
-                            route(GET("/"), ponyHandler::findOne));
-}</code></pre></div></div>
-<div class="paragraph"><p><span class="image"><img src="images/kotlin.png" alt="kotlin" width="30"></span></p></div>
+<section id="_lambda_for_dsl_3" data-transition="fade-in"><h2>Lambda for DSL</h2><div class="slide-content"><div class="paragraph"><p><span class="image"><img src="images/kotlin.png" alt="kotlin" width="30"></span></p></div>
 <div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-kotlin hljs" data-noescape="true" data-lang="kotlin">@Bean
 fun routes(ponyHandler: PonyHandler): RouterFunction&lt;ServerResponse&gt; {
     return router {
@@ -615,28 +637,44 @@ fun routes(ponyHandler: PonyHandler): RouterFunction&lt;ServerResponse&gt; {
 }</code></pre></div></div>
 <aside class="notes"><div class="paragraph"><p>Usage of lambda as last parameter for DSL
 This one is build-in for springboot</p></div></aside></div></section>
-<section id="_lambda_usage_3" data-transition="fade-in"><h2>Lambda Usage</h2><div class="slide-content"><div class="paragraph"><p><span class="image"><img src="images/java.png" alt="java" width="30"></span></p></div>
-<div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-java hljs" data-noescape="true" data-lang="java">@Bean
-RouterFunction&lt;ServerResponse&gt; routes(PonyHandler ponyHandler) {
-    return
-            route(GET("/ponies"), ponyHandler::findAll)
-                    .and(route(POST("/ponies"), ponyHandler::create))
-                    .andNest(path("/{id}"),
-                            route(GET("/"), ponyHandler::findOne));
-}</code></pre></div></div>
+<section id="_advanced_features"><h2>Advanced features</h2><div class="slide-content"><div class="paragraph"><p><span class="image"><img src="images/futur.png" alt="futur"></span></p></div></div></section>
+<section id="_extension_functions"><h2>Extension functions</h2><div class="slide-content"><div class="paragraph"><p><span class="image"><img src="images/kotlin.png" alt="kotlin" width="30"></span></p></div>
+<div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-kotlin hljs" data-noescape="true" data-lang="kotlin">fun String.asPony(): Pony = Pony(this)
+"Rainbow Dash".toPony()</code></pre></div></div>
+<aside class="notes"><div class="paragraph"><p>Add function to external classes</p></div>
+<div class="paragraph"><p>Enchance without modify</p></div>
+<div class="paragraph"><p>Exemple: Domain to DTO mapping</p></div></aside></div></section>
+<section id="_scope_function_apply"><h2>Scope Function Apply</h2><div class="slide-content"><div class="paragraph"><p><span class="image"><img src="images/java.png" alt="java" width="30"></span></p></div>
+<div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-java hljs" data-noescape="true" data-lang="java">var builder = new PonyBuilder();
+builder.setName("name")
+builder.setId("id")
+var result = builder.build()</code></pre></div></div>
 <div class="paragraph"><p><span class="image"><img src="images/kotlin.png" alt="kotlin" width="30"></span></p></div>
-<div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-kotlin hljs" data-noescape="true" data-lang="kotlin">@Bean
-fun routes(ponyHandler: PonyHandler) = router {
-    "/ponies".nest {
-        GET("", ponyHandler::findAll)
-        POST("", ponyHandler::create)
-        "/{id}".nest {
-            GET("", ponyHandler::findOne)
-        }
-    }
+<div class="listingblock fragment" data-fragment-index="1"><div class="content"><pre class="highlightjs highlight"><code class="language-kotlin hljs" data-noescape="true" data-lang="kotlin">val result = PonyBuilder().apply {
+    id = "id"
+    name = "name"
+}.build()</code></pre></div></div>
+<aside class="notes"><div class="paragraph"><p>easy to read</p></div></aside></div></section>
+<section id="_scope_function_with" data-transition="fade-in"><h2>Scope Function With</h2><div class="slide-content"><div class="paragraph"><p><span class="image"><img src="images/java.png" alt="java" width="30"></span></p></div>
+<div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-java hljs" data-noescape="true" data-lang="java">var name = pony.getName();
+var id = pony.getId();
+var result = stuff(id, name);</code></pre></div></div>
+<div class="paragraph"><p><span class="image"><img src="images/kotlin.png" alt="kotlin" width="30"></span></p></div>
+<div class="listingblock fragment" data-fragment-index="1"><div class="content"><pre class="highlightjs highlight"><code class="language-kotlin hljs" data-noescape="true" data-lang="kotlin">val (name, id) = pony
+
+val result = stuff(id, name)</code></pre></div></div>
+<aside class="notes"><div class="paragraph"><p>if pony is note a dataclass?</p></div></aside></div></section>
+<section id="_scope_function_with_2" data-transition="fade-in"><h2>Scope Function With</h2><div class="slide-content"><div class="paragraph"><p><span class="image"><img src="images/java.png" alt="java" width="30"></span></p></div>
+<div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-java hljs" data-noescape="true" data-lang="java">var name = pony.getName();
+var id = pony.getId();
+var result = stuff(id, name);</code></pre></div></div>
+<div class="paragraph"><p><span class="image"><img src="images/kotlin.png" alt="kotlin" width="30"></span></p></div>
+<div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-kotlin hljs" data-noescape="true" data-lang="kotlin">var result = with(pony) {
+  stuff(id, name);
 }</code></pre></div></div>
-<aside class="notes"><div class="paragraph"><p>Usage of lambda as last parameter for DSL
-This one is build-in for springboot</p></div></aside></div></section>
+<aside class="notes"><div class="paragraph"><p>Everything is an expression and can be returned</p></div></aside></div></section>
+<section id="_scope_function"><h2>Scope Function</h2><div class="slide-content"><div class="ulist"><ul><li><p>let</p></li><li><p>with</p></li><li><p>run</p></li><li><p>apply</p></li><li><p>also</p></li></ul></div>
+<aside class="notes"><div class="paragraph"><p>Other available</p></div></aside></div></section>
 <section id="_sealed"><h2>Sealed</h2><div class="slide-content"><div class="paragraph"><p><span class="image"><img src="images/java.png" alt="java" width="30"></span></p></div>
 <div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-java hljs" data-noescape="true" data-lang="java">public sealed interface Pony permits Pegasis, Unicorn {}
 public final class Pegasis implements Pony {}
@@ -701,52 +739,24 @@ when (p) {
     }
     // doStuff with no more nullable p: Pony
 }</code></pre></div></div></div></section>
-<section id="_extension_functions"><h2>Extension functions</h2><div class="slide-content"><div class="paragraph"><p><span class="image"><img src="images/kotlin.png" alt="kotlin" width="30"></span></p></div>
-<div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-kotlin hljs" data-noescape="true" data-lang="kotlin">fun String.asPony(): Pony = Pony(this)
-"Rainbow Dash".toPony()</code></pre></div></div>
-<aside class="notes"><div class="paragraph"><p>Add function to external classes</p></div>
-<div class="paragraph"><p>Enchance without modify</p></div>
-<div class="paragraph"><p>Exemple: Domain to DTO mapping</p></div></aside></div></section>
-<section id="_scope_function_apply"><h2>Scope Function Apply</h2><div class="slide-content"><div class="paragraph"><p><span class="image"><img src="images/java.png" alt="java" width="30"></span></p></div>
-<div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-java hljs" data-noescape="true" data-lang="java">var builder = new PonyBuilder();
-builder.setName("name")
-builder.setId("id")
-var result = builder.build()</code></pre></div></div>
-<div class="paragraph"><p><span class="image"><img src="images/kotlin.png" alt="kotlin" width="30"></span></p></div>
-<div class="listingblock fragment" data-fragment-index="1"><div class="content"><pre class="highlightjs highlight"><code class="language-kotlin hljs" data-noescape="true" data-lang="kotlin">val result = PonyBuilder().apply {
-    id = "id"
-    name = "name"
-}.build()</code></pre></div></div>
-<aside class="notes"><div class="paragraph"><p>easy to read</p></div></aside></div></section>
-<section id="_scope_function_with" data-transition="fade-in"><h2>Scope Function With</h2><div class="slide-content"><div class="paragraph"><p><span class="image"><img src="images/java.png" alt="java" width="30"></span></p></div>
-<div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-java hljs" data-noescape="true" data-lang="java">var name = pony.getName();
-var id = pony.getId();
-var result = stuff(id, name);</code></pre></div></div>
-<div class="paragraph"><p><span class="image"><img src="images/kotlin.png" alt="kotlin" width="30"></span></p></div>
-<div class="listingblock fragment" data-fragment-index="1"><div class="content"><pre class="highlightjs highlight"><code class="language-kotlin hljs" data-noescape="true" data-lang="kotlin">val (name, id) = pony
-
-val result = stuff(id, name)</code></pre></div></div>
-<aside class="notes"><div class="paragraph"><p>if pony is note a dataclass?</p></div></aside></div></section>
-<section id="_scope_function_with_2" data-transition="fade-in"><h2>Scope Function With</h2><div class="slide-content"><div class="paragraph"><p><span class="image"><img src="images/java.png" alt="java" width="30"></span></p></div>
-<div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-java hljs" data-noescape="true" data-lang="java">var name = pony.getName();
-var id = pony.getId();
-var result = stuff(id, name);</code></pre></div></div>
-<div class="paragraph"><p><span class="image"><img src="images/kotlin.png" alt="kotlin" width="30"></span></p></div>
-<div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-kotlin hljs" data-noescape="true" data-lang="kotlin">var result = with(pony) {
-  stuff(id, name);
-}</code></pre></div></div>
-<aside class="notes"><div class="paragraph"><p>Everything is an expression and can be returned</p></div></aside></div></section>
-<section id="_scope_function"><h2>Scope Function</h2><div class="slide-content"><div class="ulist"><ul><li><p>let</p></li><li><p>with</p></li><li><p>run</p></li><li><p>apply</p></li><li><p>also</p></li></ul></div>
-<aside class="notes"><div class="paragraph"><p>Other available</p></div></aside></div></section>
-<section id="_woo"><div class="slide-content"><div class="paragraph"><p><span class="image"><img src="images/wooo.jpg" alt="wooo"></span></p></div></div></section>
+<section id="_production_ready"><h2>Production ready</h2><div class="slide-content"><div class="paragraph"><p><span class="image"><img src="images/pocProd.jpg" alt="pocProd"></span></p></div></div></section>
+<section id="_integrated_with_java"><h2>Integrated with java</h2><div class="slide-content"><div class="paragraph"><p><span class="image"><img src="images/android.png" alt="android" height="200"></span>
+<span class="image"><img src="images/spring.png" alt="spring" height="100"></span>
+<span class="image"><img src="images/quarkus.png" alt="quarkus" height="100"></span>
+<span class="image"><img src="images/micronaut.png" alt="micronaut" height="200"></span>
+<span class="image"><img src="images/sonarqube.png" alt="sonarqube" height="100"></span>
+<span class="image"><img src="images/junit5.png" alt="junit5" height="100"></span></p></div>
+<aside class="notes"><div class="paragraph"><p>java interoperability everywhere</p></div></aside></div></section>
+<section id="_woo"><div class="slide-content"><div class="paragraph"><p><span class="image"><img src="images/wooo.jpg" alt="wooo"></span></p></div>
+<aside class="notes"><div class="paragraph"><p>first-class support for Kotlin</p></div></aside></div></section>
 <section id="_spring_integration"><h2>Spring integration</h2><div class="slide-content"><div class="paragraph"><p><span class="image"><img src="images/spring.init.png" alt="spring.init"></span></p></div>
 <div class="paragraph fragment" data-fragment-index="1"><p><span class="image"><img src="images/spring.doc.png" alt="spring.doc"></span></p></div></div></section>
 <section id="_spring_integration_2"><h2>Spring integration</h2><div class="slide-content"><div class="paragraph"><p>First class coroutine support</p></div>
 <div class="ulist"><ul><li><p>Webflux</p></li><li><p>Mvc</p></li><li><p>Data reactive</p></li><li><p>Messaging</p></li><li><p>Vault</p></li></ul></div></div></section>
-<section id="_spring_integration_3"><h2>Spring integration</h2><div class="slide-content"><div class="ulist"><ul><li><p>router dsl</p></li><li><p>security dsl</p></li></ul></div></div></section>
-<section id="_some_examples_from_spring"><h2>Some examples from spring</h2><div class="slide-content"><div class="paragraph"><p><span class="image"><img src="images/java.png" alt="java" width="30"></span></p></div>
+<section id="_spring_integration_3"><h2>Spring integration</h2><div class="slide-content"><div class="ulist"><ul><li><p>Router DSL</p></li><li><p>Security DSL</p></li><li><p>MockMvc DSL</p></li><li><p>Spring cloud contract DSL</p></li></ul></div></div></section>
+<section id="_jafu_kofu"><h2>Jafu &amp; Kofu</h2></section>
+<section id="_some_examples_from_spring"><div class="slide-content"><div class="paragraph"><p><span class="image"><img src="images/java.png" alt="java" width="30"></span></p></div>
 <div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-java hljs" data-noescape="true" data-lang="java">public class Application {
-
 	public static JafuApplication app = webApplication(a -&gt; a.beans(b -&gt; b
 			.bean(SampleService.class))
 			.enable(webMvc(s -&gt; s
@@ -759,12 +769,11 @@ var result = stuff(id, name);</code></pre></div></div>
 					}).converters(c -&gt; c
 							.string()
 							.jackson()))));
-
 	public static void main (String[] args) {
 		app.run(args);
 	}
 }</code></pre></div></div></div></section>
-<section id="_some_examples_from_spring_2"><h2>Some examples from spring</h2><div class="slide-content"><div class="paragraph"><p><span class="image"><img src="images/java.png" alt="java" width="30"></span></p></div>
+<section id="_some_examples_from_spring_2"><div class="slide-content"><div class="paragraph"><p><span class="image"><img src="images/java.png" alt="java" width="30"></span></p></div>
 <div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-java hljs" data-noescape="true" data-lang="java">val app = webApplication {
 	beans {
 		bean&lt;SampleService&gt;()
@@ -787,7 +796,24 @@ var result = stuff(id, name);</code></pre></div></div>
 			}
 		}
 	}
-}</code></pre></div></div></div></section></div></div><script src="node_modules/reveal.js/dist/reveal.js"></script><script>Array.prototype.slice.call(document.querySelectorAll('.slides section')).forEach(function(slide) {
+}</code></pre></div></div></div></section>
+<section id="_what_we_have_seen"><h2>What we have seen</h2><div class="slide-content"><div class="paragraph"><p><span class="fragment">Cleaner code</span></p></div>
+<div class="paragraph"><p><span class="fragment">More functional</span></p></div>
+<div class="paragraph"><p><span class="fragment">First-class support for Kotlin</span></p></div>
+<div class="paragraph"><p><span class="fragment">Production ready</span></p></div>
+<div class="paragraph"><p><span class="fragment">Fully interoperable</span></p></div>
+<div class="paragraph"><p><span class="fragement">Easy to learn for Java or Scala developers</span></p></div>
+<div class="paragraph"><p><span class="fragement">Works with java 8</span></p></div></div></section>
+<section id="_to_infinity_and_beyond"><h2>To infinity and beyond</h2><div class="slide-content"><div class="paragraph"><p><span class="fragment">Coroutine</span></p></div>
+<div class="paragraph"><p><span class="fragment">Tests</span></p></div>
+<div class="paragraph"><p><span class="fragment">Libraries like Mockk, AssertK&#8230;&#8203;</span></p></div>
+<div class="paragraph"><p><span class="fragment">Native and Js</span></p></div></div></section>
+<section id="_questions" data-background-image="images/questions.png" data-background-size="contain"><h2>Questions?</h2></section>
+<section id="_thanks" class="columns"><h2>Thanks</h2><div class="slide-content"><div class="openblock column"><div class="content"><div class="paragraph"><p><span class="image"><img src="images/bigM.png" alt="bigM"></span></p></div></div></div>
+<div class="openblock column is-three-quarters"><div class="content"><div class="paragraph"><p>Slides</p></div>
+<div class="paragraph"><p><a href="https://zomzog.fr/javaVsKotlin">zomzog.fr/javaVsKotlin</a></p></div>
+<div class="paragraph"><p>Source code</p></div>
+<div class="paragraph"><p><a href="https://github.com/zomzog/javaVsKotlin">github.com/zomzog/javaVsKotlin</a></p></div></div></div></div></section></div></div><script src="node_modules/reveal.js/dist/reveal.js"></script><script>Array.prototype.slice.call(document.querySelectorAll('.slides section')).forEach(function(slide) {
   if (slide.getAttribute('data-background-color')) return;
   // user needs to explicitly say he wants CSS color to override otherwise we might break custom css or theme (#226)
   if (!(slide.classList.contains('canvas') || slide.classList.contains('background'))) return;
