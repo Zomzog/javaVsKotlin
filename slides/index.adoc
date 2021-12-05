@@ -18,4 +18,14 @@
 All I will show works for Kotlin with java 8
 --
 
-include::bases.adoc[]
+include::intro.adoc[]
+
+include::modelisation.adoc[]
+
+include::functions.adoc[]
+
+include::advanced.adoc[]
+
+include::production.adoc[]
+
+include::conclusion.adoc[]

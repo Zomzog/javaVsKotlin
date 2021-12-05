@@ -1,0 +1,25 @@
+== History
+
+* 2011 - Created by JetBrain
+* 2016 - 1.0
+* 2017 - First-class support for Kotlin on Android
+* 2021 - 1.6
+
+[NOTE.speaker]
+--
+You found an Android developper? He know Kotlin
+--
+== Why
+
+[fragment]#Fast (at least as fast as Java).#
+
+[fragment]#100% Interoperability with Java.#
+
+[fragment]#Concise and expressive code.#
+
+[fragment]#Easy to learn for java developpers.#
+
+[NOTE.speaker]
+--
+Exclude Scala compilation too slow and complex
+--

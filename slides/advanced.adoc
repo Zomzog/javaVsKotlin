@@ -1,0 +1,243 @@
+== Advanced features
+
+image:futur.png[]
+
+
+== Extension functions
+
+image:kotlin.png[width=30]
+[source,kotlin]
+----
+fun String.asPony(): Pony = Pony(this)
+"Rainbow Dash".toPony()
+----
+
+[NOTE.speaker]
+--
+Add function to external classes
+
+Enchance without modify
+
+Exemple: Domain to DTO mapping
+--
+
+
+== Scope Function Apply
+
+image:java.png[width=30]
+[source,java]
+----
+var builder = new PonyBuilder();
+builder.setName("name")
+builder.setId("id")
+var result = builder.build()
+----
+
+
+image:kotlin.png[width=30]
+[source,kotlin, step=1]
+----
+val result = PonyBuilder().apply {
+    id = "id"
+    name = "name"
+}.build()
+----
+
+[NOTE.speaker]
+--
+easy to read
+--
+
+[transition=fade-in]
+== Scope Function With
+
+image:java.png[width=30]
+[source,java]
+----
+var name = pony.getName();
+var id = pony.getId();
+var result = stuff(id, name);
+----
+
+
+image:kotlin.png[width=30]
+[source,kotlin, step=1]
+----
+val (name, id) = pony
+
+val result = stuff(id, name)
+----
+
+[NOTE.speaker]
+--
+if pony is note a dataclass?
+--
+
+[transition=fade-in]
+== Scope Function With
+
+image:java.png[width=30]
+[source,java]
+----
+var name = pony.getName();
+var id = pony.getId();
+var result = stuff(id, name);
+----
+
+
+image:kotlin.png[width=30]
+[source,kotlin]
+----
+var result = with(pony) {
+  stuff(id, name);
+}
+----
+
+[NOTE.speaker]
+--
+Everything is an expression and can be returned
+--
+
+== Scope Function 
+
+* let
+* with
+* run
+* apply
+* also
+
+[NOTE.speaker]
+--
+Other available
+--
+
+== Sealed
+
+image:java.png[width=30]
+[source,java]
+----
+public sealed interface Pony permits Pegasis, Unicorn {}
+public final class Pegasis implements Pony {}
+public final class Unicorn implements Pony {}
+----
+
+image:kotlin.png[width=30]
+[source,kotlin, step=1]
+----
+sealed interface Pony
+class Unicorn: Pony
+class Pegasis: Pony
+----
+
+[NOTE.speaker]
+--
+3 files for the sealed in java
+--
+
+[transition=fade-in]
+== Pattern Matching
+
+image:java.png[width=30]
+[source,java]
+----
+Pony p = aPony();
+switch (p) {
+    case Unicorn u -> u.doMagic();
+    case Pegasis g -> g.fly();
+}
+----
+
+image:kotlin.png[width=30]
+[source,kotlin, step=1]
+----
+val p = aPony()
+when (p) {
+    is Unicorn -> p.doMagic()
+    is Pegasis -> p.fly()
+}
+----
+
+[NOTE.speaker]
+--
+smart cast no new variable
+same check on sealed
+--
+
+[transition=fade-in]
+== Pattern Matching
+
+image:java.png[width=30]
+[source,java]
+[.hidden]
+----
+Pony p = aPony();
+switch (p) {
+    case Unicorn u -> u.doMagic();
+    case Pegasis g -> g.fly();
+}
+----
+
+image:kotlin.png[width=30]
+[source,kotlin]
+----
+val p = aPony()
+when (p) {
+    is Unicorn -> p.doMagic()
+    is Pegasis -> p.fly()
+}
+----
+
+[NOTE.speaker]
+--
+Java 17 preview
+--
+
+[transition=fade-in]
+== Null safty
+
+image:java.png[width=30]
+[source,java]
+----
+public void doStuff(Pony p) {
+    if (p == null) {
+        throw new RuntimeException("Pony must not be null");
+    }
+    // stuff
+}
+----
+
+image:kotlin.png[width=30]
+[source,kotlin, step=1]
+----
+fun doStuff(p: Pony) {
+
+
+    
+    // doStuff
+}
+----
+
+[transition=fade-in]
+== Null safty
+
+image:java.png[width=30]
+[source,java]
+----
+public void doStuff(Pony p) {
+    if (p == null) {
+        throw new RuntimeException("Pony must not be null");
+    }
+    // stuff
+}
+----
+
+image:kotlin.png[width=30]
+[source,kotlin]
+----
+fun doStuff(p: Pony?) {
+    if (p == null) {
+        throw RuntimeException("Pony must not be null")
+    }
+    // doStuff with no more nullable p: Pony
+}
+----

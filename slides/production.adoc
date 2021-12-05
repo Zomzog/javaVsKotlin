@@ -1,0 +1,109 @@
+== Production ready
+
+image:pocProd.jpg[]
+
+== Integrated with java
+
+image:android.png[height=200]
+image:spring.png[height=100]
+image:quarkus.png[height=100]
+image:micronaut.png[height=200]
+image:sonarqube.png[height=100]
+image:junit5.png[height=100]
+
+[NOTE.speaker]
+--
+java interoperability everywhere
+--
+
+[%notitle]
+== woo
+
+image:wooo.jpg[]
+
+[NOTE.speaker]
+--
+first-class support for Kotlin
+--
+
+== Spring integration
+
+image:spring.init.png[]
+
+[fragement, step=1]
+image:spring.doc.png[]
+
+== Spring integration
+
+First class coroutine support
+
+* Webflux
+* Mvc
+* Data reactive
+* Messaging
+* Vault
+
+== Spring integration
+
+* Router DSL
+* Security DSL
+* MockMvc DSL
+* Spring cloud contract DSL
+
+== Jafu & Kofu
+
+[%notitle]
+== Some examples from spring
+
+image:java.png[width=30]
+[source,java]
+----
+public class Application {
+	public static JafuApplication app = webApplication(a -> a.beans(b -> b
+			.bean(SampleService.class))
+			.enable(webMvc(s -> s
+					.port(s.profiles().contains("test") ? 8181 : 8080)
+					.router(router -> {
+						SampleHandler handler = s.ref(SampleHandler.class);
+						router
+								.GET("/", handler::hello)
+								.GET("/api", handler::json);
+					}).converters(c -> c
+							.string()
+							.jackson()))));
+	public static void main (String[] args) {
+		app.run(args);
+	}
+}
+----
+
+[%notitle]
+== Some examples from spring
+
+image:java.png[width=30]
+[source,java]
+----
+val app = webApplication {
+	beans {
+		bean<SampleService>()
+	}
+	webMvc {
+		port = if (profiles.contains("test")) 8181 else 8080
+		router {
+			val service = ref<SampleService>()
+			GET("/") {
+				ok().body(service.generateMessage())
+			}
+			GET("/api") {
+				ok().body(Sample(service.generateMessage()))
+			}
+		}
+		converters {
+			string()
+			jackson {
+				indentOutput = true
+			}
+		}
+	}
+}
+----

@@ -15,3 +15,10 @@ gulp serve
 ----
 
 Open in your browser http://localhost:3000
+
+
+== Keys
+
+D: draw on slide
+E: draw on board
+S: speaker notes
