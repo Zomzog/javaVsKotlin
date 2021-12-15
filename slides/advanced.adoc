@@ -9,7 +9,7 @@ image:kotlin.png[width=30]
 [source,kotlin]
 ----
 fun String.asPony(): Pony = Pony(this)
-"Rainbow Dash".toPony()
+"Rainbow Dash".asPony()
 ----
 
 [NOTE.speaker]
@@ -18,7 +18,9 @@ Add function to external classes
 
 Enchance without modify
 
-Exemple: Domain to DTO mapping
+Exemple: 
+- Domain to DTO mapping
+- Add kotlin syntax sugars to existing lib
 --
 
 
@@ -100,10 +102,10 @@ Everything is an expression and can be returned
 
 == Scope Function 
 
-* let
-* with
-* run
 * apply
+* with
+* let
+* run
 * also
 
 [NOTE.speaker]

@@ -43,6 +43,38 @@ First class coroutine support
 * Messaging
 * Vault
 
+[%notitle]
+== Coroutine
+
+[source,kotlin]
+----
+fun feedMyPony(name: String): Mono<Pony> {
+	val happyPony = repo.findById(name).flatMap { hungryPony ->
+		if (hungryPony == null) {
+			Mono.error(PonyNotFound())
+		} else {
+			feeder.feed(hungryPony)
+		}
+	}
+	return happyPony
+}
+----
+
+[source,kotlin]
+----
+suspend fun feedMyPony(name: String): Pony {
+	val hungryPony = repo.findById(name) ?: throw PonyNotFound()
+	val happyPony = feeder.feed(hungryPony)
+	return happyPony
+}
+----
+
+[NOTE.speaker]
+--
+Digression coroutine, c'est un vrai sujet
+Si vous aimez le code du haut, regardez Scala
+--
+
 == Spring integration
 
 * Router DSL

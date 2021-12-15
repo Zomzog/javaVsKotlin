@@ -1,7 +1,7 @@
 == Kotlin functions are first-class
 
 
-[transition=fade-in]
+[%notitle, transition=fade-in]
 == Function
 
 image:kotlin.png[width=30]
@@ -12,12 +12,40 @@ fun doStuff(                           )         {
 }
 ----
 
+[.hidden]
+[source,kotlin]
+----
+fun doStuff(name: String, count:Int = 0) = "name $count"
+----
+
 [NOTE.speaker]
 --
 fun keyword
 --
 
-[transition=fade-in]
+[%notitle, transition=fade-in]
+== Function
+
+image:kotlin.png[width=30]
+[source,kotlin]
+----
+fun doStuff(                           ): String {
+    
+}
+----
+
+[.hidden]
+[source,kotlin]
+----
+fun doStuff(name: String, count:Int = 0) = "name $count"
+----
+
+[NOTE.speaker]
+--
+return type at the end
+--
+
+[%notitle, transition=fade-in]
 == Function
 
 image:kotlin.png[width=30]
@@ -28,12 +56,19 @@ fun doStuff(name: String, count:Int    ): String {
 }
 ----
 
+[.hidden]
+[source,kotlin]
+----
+fun doStuff(name: String, count:Int = 0) = "name $count"
+----
+
 [NOTE.speaker]
 --
-return type after 
+args like for constructors
+small digression, the string templating is great
 --
 
-[transition=fade-in]
+[%notitle, transition=fade-in]
 == Function
 
 image:kotlin.png[width=30]
@@ -44,12 +79,18 @@ fun doStuff(name: String, count:Int = 0): String {
 }
 ----
 
+[.hidden]
+[source,kotlin]
+----
+fun doStuff(name: String, count:Int = 0) = "name $count"
+----
+
 [NOTE.speaker]
 --
 default parameters
 --
 
-[transition=fade-in]
+[%notitle, transition=fade-in]
 == Function
 
 
@@ -73,7 +114,9 @@ If one line or chain, type can be infered and syntax simplified
 First class citizen = this is valid we don't need a class
 --
 
-[transition=fade-in]
+== Lambda function
+
+[%notitle, transition=fade-in]
 == Lambda
 
 image:java.png[width=30]
@@ -82,7 +125,6 @@ image:java.png[width=30]
 public String doStuff(String name, BiFunction<String, Integer, String> f) {
     return f.apply(name, 42);
 }
-
 ----
 
 image:kotlin.png[width=30]
@@ -100,7 +142,7 @@ No need of bifunction wrapper
 Function2 under the hood
 --
 
-[transition=fade-in]
+[%notitle, transition=fade-in]
 == Lambda
 
 image:java.png[width=30]
@@ -109,7 +151,7 @@ image:java.png[width=30]
 public String doStuff(String name, BiFunction<String, Integer, String> f) {
     return f.apply(name, 42);
 }
-doStuff("name", (a,b) -> a+b);
+doStuff("name", (a,b) -> a + b);
 ----
 
 image:kotlin.png[width=30]
@@ -126,7 +168,7 @@ doStuff("name", {a,b -> a + b})
 Call are same
 --
 
-[transition=fade-in]
+[%notitle, transition=fade-in]
 == Lambda
 
 image:java.png[width=30]
@@ -135,7 +177,7 @@ image:java.png[width=30]
 public String doStuff(String name, BiFunction<String, Integer, String> f) {
     return f.apply(name, 42);
 }
-doStuff("name", (a,b) -> a+b);
+doStuff("name", (a,b) -> a + b);
 ----
 
 image:kotlin.png[width=30]
@@ -150,10 +192,13 @@ doStuff("name") {a,b -> a + b}
 [NOTE.speaker]
 --
 Lambda last parameter can be extracted
+
+Useful for code read
+Useful for creating DSL
 --
 
 [transition=fade-out]
-== Lambda for DSL
+== Spring routerFunction
 
 image:java.png[width=30]
 [source,java]
@@ -170,7 +215,7 @@ RouterFunction<ServerResponse> routes(PonyHandler ponyHandler) {
 
 
 [transition=fade-in]
-== Lambda for DSL
+=== Spring routerFunction
 image:kotlin.png[width=30]
 [source,kotlin]
 ----
@@ -185,24 +230,22 @@ fun routes(ponyHandler: PonyHandler): RouterFunction<ServerResponse> {
 
 [NOTE.speaker]
 --
-Lambda last parameter can be extracted
+
 --
 
 [transition=fade-in]
-== Lambda for DSL
+== Spring routerFunction
 
 image:kotlin.png[width=30]
 [source,kotlin]
 ----
 @Bean
-fun routes(ponyHandler: PonyHandler): RouterFunction<ServerResponse> {
-    return router { 
-        "/ponies".nest { 
-            GET("", ponyHandler::findAll)
-            POST("", ponyHandler::create)
-            "/{id}".nest { 
-                GET("", ponyHandler::findOne)
-            }
+fun routes(ponyHandler: PonyHandler) = router {
+    "/ponies".nest {
+        GET("", ponyHandler::findAll)
+        POST("", ponyHandler::create)
+        "/{id}".nest {
+            GET("", ponyHandler::findOne)
         }
     }
 }

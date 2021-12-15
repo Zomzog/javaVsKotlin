@@ -10,9 +10,16 @@
 
 [fragment]#Fully interoperable#
 
-[fragement]#Easy to learn for Java or Scala developers#
+[fragment]#Works with java 8#
 
-[fragement]#Works with java 8#
+[fragment]#Easy to learn for Java or Scala developers#
+
+== Learn with Koans
+
+https://play.kotlinlang.org/koans/
+
+image::koans.png[]
+
 
 == To infinity and beyond
 
@@ -28,6 +35,7 @@
 
 image::questions.png[canvas,size=contain]
 
+[%notitle]
 [.columns]
 == Thanks
 
@@ -37,6 +45,8 @@ image:bigM.png[]
 --
 [.column.is-three-quarters]
 --
+[.large]#println("Thank you!")#
+
 Slides
 
 link:https://zomzog.fr/javaVsKotlin[zomzog.fr/javaVsKotlin]

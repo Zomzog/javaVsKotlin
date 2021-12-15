@@ -179,8 +179,7 @@ curly braces optional as the semicolumn
 image:java.png[width=30]
 [source,java]
 ----
-@lombok.Data
-public Pony {
+@lombok.Data public Pony {
     private String name;
 }
 ----
@@ -205,6 +204,7 @@ image:java.png[width=30]
 [source,java]
 ----
 public record Pony(String name) {
+
 }
 ----
 
@@ -226,7 +226,7 @@ curly braces optional as the semicolumn
 image:sucre.jpg[]
 
 
-[transition=fade-in]
+[%notitle, transition=fade-in]
 == Data class
 
 image:kotlin.png[width=30]
@@ -269,7 +269,7 @@ val (_, name) = p1
 ----
 
 
-[transition=fade-in]
+[%notitle, transition=fade-in]
 == Default, Named, ...
 
 
@@ -305,9 +305,15 @@ val (_, name) = p1
 [NOTE.speaker]
 --
 default parameters
+
+named parameters
+
+copy
+
+deconstruction
 --
 
-[transition=fade-in]
+[%notitle, transition=fade-in]
 == Value
 
 image:java.png[width=30]
@@ -329,6 +335,16 @@ value class PonyId(val id: String)
 
 [NOTE.speaker]
 --
-default parameters
+Typer fortement
+no more boxing in bytecode
 --
 
+[%notitle]
+== Diet
+
+image:rhinocerous-unicorn.gif[]
+
+[NOTE.speaker]
+--
+Better model, more robust with less code 
+--
