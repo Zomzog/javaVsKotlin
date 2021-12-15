@@ -18,6 +18,12 @@
 
 image:spoiler.gif[width=50%]
 
+
+[NOTE.speaker]
+--
+On le pense chez DGP
+--
+
 [%notitle]
 == Java 17 VS Kotlin 1.6
 
