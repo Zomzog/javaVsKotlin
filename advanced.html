@@ -416,10 +416,12 @@ ul.byline li + li {
 </style></head><body><div class="reveal"><div class="slides"><section id="_advanced_features"><h2>Advanced features</h2><div class="slide-content"><div class="paragraph"><p><span class="image"><img src="futur.png" alt="futur"></span></p></div></div></section>
 <section id="_extension_functions"><h2>Extension functions</h2><div class="slide-content"><div class="paragraph"><p><span class="image"><img src="kotlin.png" alt="kotlin" width="30"></span></p></div>
 <div class="listingblock"><div class="content"><pre class="highlight"><code class="language-kotlin" data-lang="kotlin">fun String.asPony(): Pony = Pony(this)
-"Rainbow Dash".toPony()</code></pre></div></div>
+"Rainbow Dash".asPony()</code></pre></div></div>
 <aside class="notes"><div class="paragraph"><p>Add function to external classes</p></div>
 <div class="paragraph"><p>Enchance without modify</p></div>
-<div class="paragraph"><p>Exemple: Domain to DTO mapping</p></div></aside></div></section>
+<div class="paragraph"><p>Exemple:
+- Domain to DTO mapping
+- Add kotlin syntax sugars to existing lib</p></div></aside></div></section>
 <section id="_scope_function_apply"><h2>Scope Function Apply</h2><div class="slide-content"><div class="paragraph"><p><span class="image"><img src="java.png" alt="java" width="30"></span></p></div>
 <div class="listingblock"><div class="content"><pre class="highlight"><code class="language-java" data-lang="java">var builder = new PonyBuilder();
 builder.setName("name")
@@ -449,7 +451,7 @@ var result = stuff(id, name);</code></pre></div></div>
   stuff(id, name);
 }</code></pre></div></div>
 <aside class="notes"><div class="paragraph"><p>Everything is an expression and can be returned</p></div></aside></div></section>
-<section id="_scope_function"><h2>Scope Function</h2><div class="slide-content"><div class="ulist"><ul><li><p>let</p></li><li><p>with</p></li><li><p>run</p></li><li><p>apply</p></li><li><p>also</p></li></ul></div>
+<section id="_scope_function"><h2>Scope Function</h2><div class="slide-content"><div class="ulist"><ul><li><p>apply</p></li><li><p>with</p></li><li><p>let</p></li><li><p>run</p></li><li><p>also</p></li></ul></div>
 <aside class="notes"><div class="paragraph"><p>Other available</p></div></aside></div></section>
 <section id="_sealed"><h2>Sealed</h2><div class="slide-content"><div class="paragraph"><p><span class="image"><img src="java.png" alt="java" width="30"></span></p></div>
 <div class="listingblock"><div class="content"><pre class="highlight"><code class="language-java" data-lang="java">public sealed interface Pony permits Pegasis, Unicorn {}

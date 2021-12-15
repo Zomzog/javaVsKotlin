@@ -414,29 +414,40 @@ ul.byline li + li {
   margin-top: 0.25em;
 }
 </style></head><body><div class="reveal"><div class="slides"><section id="_kotlin_functions_are_first_class"><h2>Kotlin functions are first-class</h2></section>
-<section id="_function" data-transition="fade-in"><h2>Function</h2><div class="slide-content"><div class="paragraph"><p><span class="image"><img src="kotlin.png" alt="kotlin" width="30"></span></p></div>
+<section id="_function" data-transition="fade-in"><div class="slide-content"><div class="paragraph"><p><span class="image"><img src="kotlin.png" alt="kotlin" width="30"></span></p></div>
 <div class="listingblock"><div class="content"><pre class="highlight"><code class="language-kotlin" data-lang="kotlin">fun doStuff(                           )         {
 
 }</code></pre></div></div>
+<div class="listingblock hidden"><div class="content"><pre class="highlight"><code class="language-kotlin" data-lang="kotlin">fun doStuff(name: String, count:Int = 0) = "name $count"</code></pre></div></div>
 <aside class="notes"><div class="paragraph"><p>fun keyword</p></div></aside></div></section>
-<section id="_function_2" data-transition="fade-in"><h2>Function</h2><div class="slide-content"><div class="paragraph"><p><span class="image"><img src="kotlin.png" alt="kotlin" width="30"></span></p></div>
+<section id="_function_2" data-transition="fade-in"><div class="slide-content"><div class="paragraph"><p><span class="image"><img src="kotlin.png" alt="kotlin" width="30"></span></p></div>
+<div class="listingblock"><div class="content"><pre class="highlight"><code class="language-kotlin" data-lang="kotlin">fun doStuff(                           ): String {
+
+}</code></pre></div></div>
+<div class="listingblock hidden"><div class="content"><pre class="highlight"><code class="language-kotlin" data-lang="kotlin">fun doStuff(name: String, count:Int = 0) = "name $count"</code></pre></div></div>
+<aside class="notes"><div class="paragraph"><p>return type at the end</p></div></aside></div></section>
+<section id="_function_3" data-transition="fade-in"><div class="slide-content"><div class="paragraph"><p><span class="image"><img src="kotlin.png" alt="kotlin" width="30"></span></p></div>
 <div class="listingblock"><div class="content"><pre class="highlight"><code class="language-kotlin" data-lang="kotlin">fun doStuff(name: String, count:Int    ): String {
     return "name $count"
 }</code></pre></div></div>
-<aside class="notes"><div class="paragraph"><p>return type after</p></div></aside></div></section>
-<section id="_function_3" data-transition="fade-in"><h2>Function</h2><div class="slide-content"><div class="paragraph"><p><span class="image"><img src="kotlin.png" alt="kotlin" width="30"></span></p></div>
+<div class="listingblock hidden"><div class="content"><pre class="highlight"><code class="language-kotlin" data-lang="kotlin">fun doStuff(name: String, count:Int = 0) = "name $count"</code></pre></div></div>
+<aside class="notes"><div class="paragraph"><p>args like for constructors
+small digression, the string templating is great</p></div></aside></div></section>
+<section id="_function_4" data-transition="fade-in"><div class="slide-content"><div class="paragraph"><p><span class="image"><img src="kotlin.png" alt="kotlin" width="30"></span></p></div>
 <div class="listingblock"><div class="content"><pre class="highlight"><code class="language-kotlin" data-lang="kotlin">fun doStuff(name: String, count:Int = 0): String {
     return "name $count"
 }</code></pre></div></div>
+<div class="listingblock hidden"><div class="content"><pre class="highlight"><code class="language-kotlin" data-lang="kotlin">fun doStuff(name: String, count:Int = 0) = "name $count"</code></pre></div></div>
 <aside class="notes"><div class="paragraph"><p>default parameters</p></div></aside></div></section>
-<section id="_function_4" data-transition="fade-in"><h2>Function</h2><div class="slide-content"><div class="paragraph"><p><span class="image"><img src="kotlin.png" alt="kotlin" width="30"></span></p></div>
+<section id="_function_5" data-transition="fade-in"><div class="slide-content"><div class="paragraph"><p><span class="image"><img src="kotlin.png" alt="kotlin" width="30"></span></p></div>
 <div class="listingblock"><div class="content"><pre class="highlight"><code class="language-kotlin" data-lang="kotlin">fun doStuff(name: String, count:Int = 0): String {
     return "name $count"
 }</code></pre></div></div>
 <div class="listingblock"><div class="content"><pre class="highlight"><code class="language-kotlin" data-lang="kotlin">fun doStuff(name: String, count:Int = 0) = "name $count"</code></pre></div></div>
 <aside class="notes"><div class="paragraph"><p>If one line or chain, type can be infered and syntax simplified</p></div>
 <div class="paragraph"><p>First class citizen = this is valid we don&#8217;t need a class</p></div></aside></div></section>
-<section id="_lambda" data-transition="fade-in"><h2>Lambda</h2><div class="slide-content"><div class="paragraph"><p><span class="image"><img src="java.png" alt="java" width="30"></span></p></div>
+<section id="_lambda_function"><h2>Lambda function</h2></section>
+<section id="_lambda" data-transition="fade-in"><div class="slide-content"><div class="paragraph"><p><span class="image"><img src="java.png" alt="java" width="30"></span></p></div>
 <div class="listingblock"><div class="content"><pre class="highlight"><code class="language-java" data-lang="java">public String doStuff(String name, BiFunction&lt;String, Integer, String&gt; f) {
     return f.apply(name, 42);
 }</code></pre></div></div>
@@ -446,38 +457,38 @@ ul.byline li + li {
 }</code></pre></div></div>
 <aside class="notes"><div class="paragraph"><p>No need of bifunction wrapper
 Function2 under the hood</p></div></aside></div></section>
-<section id="_lambda_2" data-transition="fade-in"><h2>Lambda</h2><div class="slide-content"><div class="paragraph"><p><span class="image"><img src="java.png" alt="java" width="30"></span></p></div>
+<section id="_lambda_2" data-transition="fade-in"><div class="slide-content"><div class="paragraph"><p><span class="image"><img src="java.png" alt="java" width="30"></span></p></div>
 <div class="listingblock"><div class="content"><pre class="highlight"><code class="language-java" data-lang="java">public String doStuff(String name, BiFunction&lt;String, Integer, String&gt; f) {
     return f.apply(name, 42);
 }
-doStuff("name", (a,b) -&gt; a+b);</code></pre></div></div>
+doStuff("name", (a,b) -&gt; a + b);</code></pre></div></div>
 <div class="paragraph"><p><span class="image"><img src="kotlin.png" alt="kotlin" width="30"></span></p></div>
 <div class="listingblock"><div class="content"><pre class="highlight"><code class="language-kotlin" data-lang="kotlin">fun doStuff(name: String, f: (String, Int) -&gt; String): String {
     return f(name, 42)
 }
 doStuff("name", {a,b -&gt; a + b})</code></pre></div></div>
 <aside class="notes"><div class="paragraph"><p>Call are same</p></div></aside></div></section>
-<section id="_lambda_3" data-transition="fade-in"><h2>Lambda</h2><div class="slide-content"><div class="paragraph"><p><span class="image"><img src="java.png" alt="java" width="30"></span></p></div>
+<section id="_lambda_3" data-transition="fade-in"><div class="slide-content"><div class="paragraph"><p><span class="image"><img src="java.png" alt="java" width="30"></span></p></div>
 <div class="listingblock"><div class="content"><pre class="highlight"><code class="language-java" data-lang="java">public String doStuff(String name, BiFunction&lt;String, Integer, String&gt; f) {
     return f.apply(name, 42);
 }
-doStuff("name", (a,b) -&gt; a+b);</code></pre></div></div>
+doStuff("name", (a,b) -&gt; a + b);</code></pre></div></div>
 <div class="paragraph"><p><span class="image"><img src="kotlin.png" alt="kotlin" width="30"></span></p></div>
 <div class="listingblock"><div class="content"><pre class="highlight"><code class="language-kotlin" data-lang="kotlin">fun doStuff(name: String, f: (String, Int) -&gt; String): String {
     return f(name, 42)
 }
 doStuff("name") {a,b -&gt; a + b}</code></pre></div></div>
-<aside class="notes"><div class="paragraph"><p>Lambda last parameter can be extracted</p></div></aside></div></section>
-<section id="_lambda_for_dsl" data-transition="fade-out"><h2>Lambda for DSL</h2><div class="slide-content"><div class="paragraph"><p><span class="image"><img src="java.png" alt="java" width="30"></span></p></div>
-<div class="listingblock"><div class="content"><pre class="highlight"><code class="language-java" data-lang="java">@Bean
+<aside class="notes"><div class="paragraph"><p>Lambda last parameter can be extracted</p></div>
+<div class="paragraph"><p>Useful for code read
+Useful for creating DSL</p></div></aside></div></section>
+<section><section id="_spring_routerfunction" data-transition="fade-out"><h2>Spring routerFunction</h2><div class="slide-content"><div class="paragraph"><p><span class="image"><img src="java.png" alt="java" width="30"></span></p></div><div class="listingblock"><div class="content"><pre class="highlight"><code class="language-java" data-lang="java">@Bean
 RouterFunction&lt;ServerResponse&gt; routes(PonyHandler ponyHandler) {
     return
             route(GET("/ponies"), ponyHandler::findAll)
                     .and(route(POST("/ponies"), ponyHandler::create))
                     .andNest(path("/{id}"),
                             route(GET("/"), ponyHandler::findOne));
-}</code></pre></div></div></div></section>
-<section id="_lambda_for_dsl_2" data-transition="fade-in"><h2>Lambda for DSL</h2><div class="slide-content"><div class="paragraph"><p><span class="image"><img src="kotlin.png" alt="kotlin" width="30"></span></p></div>
+}</code></pre></div></div></div></section><section id="_spring_routerfunction_2" data-transition="fade-in"><h2>Spring routerFunction</h2><div class="slide-content"><div class="paragraph"><p><span class="image"><img src="kotlin.png" alt="kotlin" width="30"></span></p></div>
 <div class="listingblock"><div class="content"><pre class="highlight"><code class="language-kotlin" data-lang="kotlin">@Bean
 fun routes(ponyHandler: PonyHandler): RouterFunction&lt;ServerResponse&gt; {
     return route(GET("/ponies"), ponyHandler::findAll)
@@ -485,17 +496,15 @@ fun routes(ponyHandler: PonyHandler): RouterFunction&lt;ServerResponse&gt; {
             .andNest(path("/{id}"),
                     route(GET("/"), ponyHandler::findOne))
 }</code></pre></div></div>
-<aside class="notes"><div class="paragraph"><p>Lambda last parameter can be extracted</p></div></aside></div></section>
-<section id="_lambda_for_dsl_3" data-transition="fade-in"><h2>Lambda for DSL</h2><div class="slide-content"><div class="paragraph"><p><span class="image"><img src="kotlin.png" alt="kotlin" width="30"></span></p></div>
+<aside class="notes"></aside></div></section></section>
+<section id="_spring_routerfunction_3" data-transition="fade-in"><h2>Spring routerFunction</h2><div class="slide-content"><div class="paragraph"><p><span class="image"><img src="kotlin.png" alt="kotlin" width="30"></span></p></div>
 <div class="listingblock"><div class="content"><pre class="highlight"><code class="language-kotlin" data-lang="kotlin">@Bean
-fun routes(ponyHandler: PonyHandler): RouterFunction&lt;ServerResponse&gt; {
-    return router {
-        "/ponies".nest {
-            GET("", ponyHandler::findAll)
-            POST("", ponyHandler::create)
-            "/{id}".nest {
-                GET("", ponyHandler::findOne)
-            }
+fun routes(ponyHandler: PonyHandler) = router {
+    "/ponies".nest {
+        GET("", ponyHandler::findAll)
+        POST("", ponyHandler::create)
+        "/{id}".nest {
+            GET("", ponyHandler::findOne)
         }
     }
 }</code></pre></div></div>

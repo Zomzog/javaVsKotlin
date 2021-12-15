@@ -427,6 +427,23 @@ ul.byline li + li {
 <div class="paragraph fragment" data-fragment-index="1"><p><span class="image"><img src="spring.doc.png" alt="spring.doc"></span></p></div></div></section>
 <section id="_spring_integration_2"><h2>Spring integration</h2><div class="slide-content"><div class="paragraph"><p>First class coroutine support</p></div>
 <div class="ulist"><ul><li><p>Webflux</p></li><li><p>Mvc</p></li><li><p>Data reactive</p></li><li><p>Messaging</p></li><li><p>Vault</p></li></ul></div></div></section>
+<section id="_coroutine"><div class="slide-content"><div class="listingblock"><div class="content"><pre class="highlight"><code class="language-kotlin" data-lang="kotlin">fun feedMyPony(name: String): Mono&lt;Pony&gt; {
+	val happyPony = repo.findById(name).flatMap { hungryPony -&gt;
+		if (hungryPony == null) {
+			Mono.error(PonyNotFound())
+		} else {
+			feeder.feed(hungryPony)
+		}
+	}
+	return happyPony
+}</code></pre></div></div>
+<div class="listingblock"><div class="content"><pre class="highlight"><code class="language-kotlin" data-lang="kotlin">suspend fun feedMyPony(name: String): Pony {
+	val hungryPony = repo.findById(name) ?: throw PonyNotFound()
+	val happyPony = feeder.feed(hungryPony)
+	return happyPony
+}</code></pre></div></div>
+<aside class="notes"><div class="paragraph"><p>Digression coroutine, c&#8217;est un vrai sujet
+Si vous aimez le code du haut, regardez Scala</p></div></aside></div></section>
 <section id="_spring_integration_3"><h2>Spring integration</h2><div class="slide-content"><div class="ulist"><ul><li><p>Router DSL</p></li><li><p>Security DSL</p></li><li><p>MockMvc DSL</p></li><li><p>Spring cloud contract DSL</p></li></ul></div></div></section>
 <section id="_jafu_kofu"><h2>Jafu &amp; Kofu</h2></section>
 <section id="_some_examples_from_spring"><div class="slide-content"><div class="paragraph"><p><span class="image"><img src="java.png" alt="java" width="30"></span></p></div>

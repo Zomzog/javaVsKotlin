@@ -9,9 +9,23 @@
 :customcss: css/custom.css
 :docinfo: private
 
-= Java VS Kotlin
+[%notitle]
+= Kotlin
 
+*Un choix possible?*
+
+== Spoiler alert
+
+image:spoiler.gif[width=50%]
+
+[%notitle]
 == Java 17 VS Kotlin 1.6
+
+[.large]#Java 17#
+
+image:vs.png[height=80]
+
+[.large]#Kotlin 1.6#
 
 [NOTE.speaker]
 --
